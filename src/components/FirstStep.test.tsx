@@ -2,6 +2,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import FirstStep from "./FirstStep";
 import { Form } from "antd";
 import userEvent from "@testing-library/user-event";
+import { act } from "react-dom/test-utils";
 
 describe("FirstStep", () => {
   beforeAll(() => {
@@ -15,13 +16,14 @@ describe("FirstStep", () => {
       };
   });
 
-  it("is rendering FirstStep component", () => {
+  it("is rendering FirstStep component", async () => {
     const appointment = {
       firstName: "",
       lastName: "",
       email: "",
       dateTime: null,
     };
+
     render(
       <Form
         layout="vertical"
@@ -44,7 +46,9 @@ describe("FirstStep", () => {
       target: { value: "Ilia" },
     });
 
-    expect(screen.getByTestId("firstName")).toHaveValue("Ilia");
+    await act(() => {
+      expect(screen.getByTestId("firstName")).toHaveValue("Ilia");
+    });
 
     expect(screen.getByTestId("lastName")).toBeInTheDocument();
     expect(screen.getByTestId("lastName")).toHaveValue("");
@@ -53,7 +57,9 @@ describe("FirstStep", () => {
       target: { value: "Sturua" },
     });
 
-    expect(screen.getByTestId("lastName")).toHaveValue("Sturua");
+    await act(() => {
+      expect(screen.getByTestId("lastName")).toHaveValue("Sturua");
+    });
 
     expect(screen.getByTestId("email")).toBeInTheDocument();
     expect(screen.getByTestId("email")).toHaveValue("");
@@ -62,7 +68,9 @@ describe("FirstStep", () => {
       target: { value: "iliasturua@example.com" },
     });
 
-    expect(screen.getByTestId("email")).toHaveValue("iliasturua@example.com");
+    await act(() => {
+      expect(screen.getByTestId("email")).toHaveValue("iliasturua@example.com");
+    });
 
     expect(screen.getByRole("button", { name: "Next" })).toBeInTheDocument();
     userEvent.click(screen.getByRole("button", { name: "Next" }));
