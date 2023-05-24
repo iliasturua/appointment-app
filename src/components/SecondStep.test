@@ -1,0 +1,8 @@
+/* 
+ There should be a test case which is rendering SecondStep component.
+
+ It should find if an element with test-id: "datePicker" to be in the document, and at first it's value should be null,
+ after that test should change the value of Date Picker and check to have value of picked date.
+
+ Also it should check if there are buttons with text Previous and Submit and test should click on them.
+*/
