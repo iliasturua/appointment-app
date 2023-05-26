@@ -1,4 +1,4 @@
-import { Button, DatePicker, Form } from "antd";
+import { Button, DatePicker, Form, message } from "antd";
 import { Appointment } from "../types/appointment.types";
 
 export interface InputProps {
@@ -11,6 +11,15 @@ export interface InputProps {
 const SecondStep = (props: InputProps) => {
   const { appointment, setAppointment, handlePrevStep, handleSubmit } = props;
 
+  const validateFields = () => {
+    if (!appointment.dateTime) {
+      message.error("Please select a date and time");
+      return;
+    }
+
+    handleSubmit();
+  };
+
   const handleDateTimeChange = (dateTime: any) => {
     setAppointment({
       ...appointment,
@@ -22,7 +31,7 @@ const SecondStep = (props: InputProps) => {
       <Form.Item
         label="Date and Time"
         name="dateTime"
-        rules={[{ required: true }]}
+        rules={[{ required: true, message: "Please enter date time" }]}
       >
         <DatePicker
           showTime
@@ -32,7 +41,7 @@ const SecondStep = (props: InputProps) => {
       </Form.Item>
       <Form.Item>
         <Button onClick={handlePrevStep}>Previous</Button>
-        <Button type="primary" onClick={handleSubmit}>
+        <Button type="primary" onClick={validateFields}>
           Submit
         </Button>
       </Form.Item>
