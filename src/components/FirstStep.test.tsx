@@ -19,6 +19,40 @@ describe("FirstStep", () => {
     cleanup();
   });
 
+  it("is rendering FirstStep component", () => {
+    const appointment = {
+      firstName: "",
+      lastName: "",
+      email: "",
+      dateTime: null,
+    };
+    render(
+      <Form
+        layout="vertical"
+        onFinish={() => {}}
+        initialValues={appointment}
+        className="form"
+      >
+        <FirstStep
+          appointment={appointment}
+          setAppointment={() => {}}
+          handleNextStep={() => {}}
+        />
+      </Form>
+    );
+
+    expect(screen.getByTestId("firstName")).toBeInTheDocument();
+    expect(screen.getByTestId("firstName")).toHaveValue("");
+
+    expect(screen.getByTestId("lastName")).toBeInTheDocument();
+    expect(screen.getByTestId("lastName")).toHaveValue("");
+
+    expect(screen.getByTestId("email")).toBeInTheDocument();
+    expect(screen.getByTestId("email")).toHaveValue("");
+
+    expect(screen.getByRole("button", { name: "Next" })).toBeInTheDocument();
+  });
+
   it("displays an error message when required fields are not filled", async () => {
     const appointment = {
       firstName: "",
@@ -32,7 +66,7 @@ describe("FirstStep", () => {
         layout="vertical"
         onFinish={() => {}}
         initialValues={appointment}
-        style={{ marginTop: "24px" }}
+        className="form"
       >
         <FirstStep
           appointment={appointment}
@@ -63,7 +97,7 @@ describe("FirstStep", () => {
         layout="vertical"
         onFinish={() => {}}
         initialValues={appointment}
-        style={{ marginTop: "24px" }}
+        className="form"
       >
         <FirstStep
           appointment={appointment}
@@ -93,7 +127,7 @@ describe("FirstStep", () => {
         layout="vertical"
         onFinish={() => {}}
         initialValues={appointment}
-        style={{ marginTop: "24px" }}
+        className="form"
       >
         <FirstStep
           appointment={appointment}
@@ -123,7 +157,7 @@ describe("FirstStep", () => {
         layout="vertical"
         onFinish={() => {}}
         initialValues={appointment}
-        style={{ marginTop: "24px" }}
+        className="form"
       >
         <FirstStep
           appointment={appointment}
@@ -150,7 +184,7 @@ describe("FirstStep", () => {
         layout="vertical"
         onFinish={() => {}}
         initialValues={appointment}
-        style={{ marginTop: "24px" }}
+        className="form"
       >
         <FirstStep
           appointment={appointment}
