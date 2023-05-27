@@ -1,0 +1,20 @@
+1.  Render the component:
+
+        - Render the SecondStep component with the required props (appointment, setAppointment, handlePrevStep, and handleSubmit).
+        - Verify that the component renders without throwing any errors.
+
+2.  Display the date and time picker:
+
+        - Verify that the date and time picker is displayed on the screen.
+        - Verify that the date and time picker has the format "YYYY-MM-DD HH:mm:ss".
+        - Verify that the selected date and time is properly updated in the appointment state.
+
+3.  Click the "Previous" button:
+
+        - Click the "Previous" button.
+
+4.  Click the "Submit" button:
+
+        - Click the "Submit" button.
+        - Check that if the appointment.dateTime is empty, an error message saying "Please select a date and time" is displayed.
+        - Check that if the appointment.dateTime is not empty, the handleSubmit function is called.

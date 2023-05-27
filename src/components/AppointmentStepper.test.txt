@@ -1,0 +1,29 @@
+1.  Render the component:
+
+        - Render the AppointmentStepper component.
+        - Verify that the component renders without throwing any errors.
+        - Check that the steps container with the correct titles is displayed.
+        - Check that the form container is displayed.
+        - Verify that the loading spinner is displayed when loading is true.
+        - Verify that the form is rendered when loading is false.
+
+2.  Fetch user data:
+
+        - Mock the API call to api.me() to return a successful response with mock user data.
+        - Verify that the user data is fetched and displayed in the form's initial values.
+        - Check that the loading spinner disappears after the user data is fetched.
+
+3.  Submit the form:
+
+        - Mock the API call to api.submit() to return a successful response.
+        - Fill in the form fields with valid data.
+        - Submit the form by clicking the "Submit" button.
+        - Check that the success message "Submitted successfully" is displayed.
+        - Verify that the current step is incremented by 1.
+
+4.  Error handling:
+
+        - Mock the API call to api.submit() to return an error response.
+        - Fill in the form fields with valid data.
+        - Submit the form by clicking the "Submit" button.
+        - Check that the error message is displayed when the API call returns an error message.
